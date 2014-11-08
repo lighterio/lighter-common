@@ -87,7 +87,7 @@ function finish() {
   var key, item, path, master, minions, minion;
   for (key in map) {
     item = map[key];
-    master = item.master;
+    master = item.master || 0;
     minions = item.minions;
     minion = minions[0] || 0;
     if (!master || (minion.time > master.time)) {
@@ -112,15 +112,22 @@ function copy(direction, source, dest) {
   function report() {
     console.log(direction + ': '.gray + shorten(source).cyan + ' > '.gray + shorten(dest));
   }
+  var content = '' + fs.readFileSync(source);
+  var original = '';
+  if (!/@version/.test(content)) {
+    var origin = source.replace(/^.*\/(lighter-common\/)/, '$1');
+    content = '/**\n * @origin ' + origin + '\n * @version 0.0.1\n */\n\n' + content;
+  }
+  if (fs.existsSync(dest)) {
+    original += fs.readFileSync(dest);
+  }
   if (options.dryRun) {
-    report();
+    if (content != original) {
+      direction = direction.replace(/ed/, 'e');
+      report();
+    }
   }
   else {
-    var content = '' + fs.readFileSync(source);
-    if (!/@version/.test(content)) {
-      var origin = source.replace(/^.*\/(lighter-common\/)/, '$1');
-      content = '/**\n * @origin ' + origin + '\n * @version 0.0.1\n */\n\n' + content;
-    }
     var original = fs.readFileSync(dest);
     if (content != original) {
       var dir = dirname(dest);
