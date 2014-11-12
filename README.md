@@ -20,6 +20,10 @@ Install `lighter-common` globally:
 npm install -g lighter-common
 ```
 
+Use lighter-common
+```
+lighter-common help
+```
 
 ## Acknowledgements
 

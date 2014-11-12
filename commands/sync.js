@@ -128,7 +128,6 @@ function copy(direction, source, dest) {
     }
   }
   else {
-    var original = fs.readFileSync(dest);
     if (content != original) {
       var dir = dirname(dest);
       mkdirp(dir, function () {

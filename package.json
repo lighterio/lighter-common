@@ -1,37 +1,35 @@
 {
   "name": "lighter-common",
+  "version": "0.0.3",
   "description": "A set of tools and libraries for Lighter.io modules",
+  "dependencies": {
+    "shellify": "^0.0.4"
+  },
+  "devDependencies": {
+    "exam": "^0.1.5"
+  },
   "keywords": [
     "lighter-common"
   ],
-  "version": "0.0.2",
   "main": "lighter-common.js",
   "bin": {
     "lighter-common": "lighter-common.js"
   },
-  "homepage": "https://github.com/lighter-common/lighter-common",
-  "repository": "https://github.com/lighter-common/lighter-common.git",
-  "bugs": {
-    "url": "https://github.com/lighter-common/lighter-common/issues"
+  "engines": {
+    "node": ">=0.2.6"
   },
-  "author": "Sam Eubank <sameubank@gmail.com>",
-  "contributors": [
-    "Sam Eubank <sameubank@gmail.com>"
-  ],
-  "license": "MIT",
-  "engines": [
-    "node >= 0.2.6"
-  ],
   "scripts": {
     "test": "./node_modules/exam/exam.js",
     "cover": "istanbul cover ./node_modules/exam/exam.js",
     "report": "open coverage/lcov-report/index.html",
     "coveralls": "istanbul cover ./node_modules/exam/exam.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
-  "dependencies": {
-    "shellify": "^0.0.4"
-  },
-  "devDependencies": {
-    "exam": "^0.1.5"
-  }
+  "repository": "https://github.com/lighter-common/lighter-common.git",
+  "bugs": "https://github.com/lighter-common/lighter-common/issues",
+  "homepage": "https://github.com/lighter-common/lighter-common",
+  "author": "Sam Eubank <sameubank@gmail.com>",
+  "contributors": [
+    "Sam Eubank <sameubank@gmail.com>"
+  ],
+  "license": "MIT"
 }

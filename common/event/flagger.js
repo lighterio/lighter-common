@@ -4,14 +4,11 @@
  * or listen for a change if it doesn't.
  *
  * @origin lighter-common/common/events/flagger.js
- * @version 0.0.1
+ * @version 0.0.2
  */
 
-require('../object/extend.js');
-var Emitter = require('./emitter.js');
-var Flagger = module.exports = function () {};
-
-Flagger.prototype = Emitter.extend({
+var Emitter = require('../event/emitter');
+var Flagger = module.exports = Emitter.extend({
 
   /**
    * Get the value of a flag.

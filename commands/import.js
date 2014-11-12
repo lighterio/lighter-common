@@ -21,18 +21,21 @@ module.exports = function (input) {
     var source = sourceDir + path;
     var dest = destDir + path;
     if (fs.existsSync(source)) {
-      if (!options.dryRun) {
+      if (options.dryRun) {
+        console.log('Import'.green + ': '.gray + shorten(source).cyan + ' > '.gray + dest);
+      }
+      else {
         var content = fs.readFileSync(source);
         var dir = dirname(dest);
         mkdirp(dir, function (error) {
           if (error) throw error;
           fs.writeFileSync(dest, content);
         });
+        console.log('Imported'.green + ': '.gray + shorten(source).cyan + ' > '.gray + dest);
       }
-      console.log('IMPORTED: '.green + shorten(source).cyan + ' > '.grey + dest);
     }
     else {
-      console.error('File not found: "' + source + '".');
+      console.log(('File not found: "' + source + '".').red);
     }
   });
 };
@@ -41,7 +44,7 @@ function shorten(path) {
   var dirs = [[process.cwd(), '.'], [process.env.HOME, '~']];
   for (var i = 0; i < 2; i++) {
     var dir = dirs[i];
-    if (dir[0] && (path.indexOf(dir[0]) === 0)) {
+    if (dir[0] && (path.indexOf(dir[0] + '/') === 0)) {
       return dir[1] + path.substr(dir[0].length);
     }
   }

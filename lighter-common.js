@@ -6,6 +6,14 @@ if (process.mainModule == module) {
   var shellify = require('shellify');
   shellify({
     commands: {
+      list: {
+        note: 'List the available modules',
+        alias: 'l',
+        options: {
+          grep: 'Only show the modules that match an expression',
+          ignore: 'Ignore modules that match an expression'
+        }
+      },
       import: {
         note: 'Import one or more common files to the current directory',
         alias: 'i',
@@ -35,6 +43,6 @@ common.sync = require('./commands/sync.js');
 Object.defineProperty(common, 'version', {
   enumerable: false,
   get: function () {
-    return require('./package.json').version;
+    return require(__dirname + '/package.json').version;
   }
 });
