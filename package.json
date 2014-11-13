@@ -1,12 +1,12 @@
 {
   "name": "lighter-common",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A set of tools and libraries for Lighter.io modules",
   "dependencies": {
-    "shellify": "^0.0.4"
+    "shellify": "^0.0.5"
   },
   "devDependencies": {
-    "exam": "^0.1.5"
+    "exam": "^0.1.6"
   },
   "keywords": [
     "lighter-common"
@@ -24,9 +24,9 @@
     "report": "open coverage/lcov-report/index.html",
     "coveralls": "istanbul cover ./node_modules/exam/exam.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
-  "repository": "https://github.com/lighter-common/lighter-common.git",
-  "bugs": "https://github.com/lighter-common/lighter-common/issues",
-  "homepage": "https://github.com/lighter-common/lighter-common",
+  "repository": "https://github.com/lighterio/lighter-common.git",
+  "bugs": "https://github.com/lighterio/lighter-common/issues",
+  "homepage": "https://github.com/lighterio/lighter-common",
   "author": "Sam Eubank <sameubank@gmail.com>",
   "contributors": [
     "Sam Eubank <sameubank@gmail.com>"
