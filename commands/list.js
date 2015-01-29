@@ -1,12 +1,3 @@
-/**
- * Usage:
- *   lighter-common list [options] ...
- *
- * Options:
- *   -g, --grep        Only show the modules that match an expression.
- *   -i, --ignore      Ignore modules that match an expression.
- */
-
 var fs = require('fs');
 var commonDir = __dirname.replace(/commands$/, 'common');
 var pattern = /\.js$/;
@@ -15,25 +6,24 @@ var wait = 0;
 var grep;
 var ignore;
 
-module.exports = function (input) {
-  grep = getRegExp(input.grep, /^.*$/);
-  ignore = getRegExp(input.ignore, /^$/);
-  wait++;
-  find(commonDir, 1);
-  unwait();
-};
+module.exports = {
 
-function getRegExp(string, value) {
-  if (string) {
-    try {
-      value = new RegExp(string);
-    }
-    catch (e) {
-      console.log('Invalid expression: ' + ('"' + string + '"').green);
-    }
+  description: 'Show a list of lighter-common modules',
+
+  options: [
+    '-g, --grep <regexp>    Only show the modules that match an expression (RegExp)',
+    '-i, --ignore <regexp>  Ignore modules that match an expression (RegExp)'
+  ],
+
+  run: function (options) {
+    grep = options.grep || /^.*$/;
+    ignore = options.ignore || /^$/;
+    wait++;
+    find(commonDir, 1);
+    unwait();
   }
-  return value;
-}
+
+};
 
 function find(path, isMaster) {
   wait++;
@@ -65,6 +55,7 @@ function unwait() {
 }
 
 function finish() {
+  console.log('');
   list.sort();
   list.forEach(function (path) {
     var content = '' + fs.readFileSync(path);
@@ -77,4 +68,5 @@ function finish() {
       console.log(name + (' @' + version).green);
     }
   });
+  console.log('');
 }

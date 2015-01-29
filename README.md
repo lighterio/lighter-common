@@ -23,6 +23,8 @@ npm install -g lighter-common
 Use lighter-common
 ```
 lighter-common help
+lighter-common import
+lighter-common sync
 ```
 
 ## Acknowledgements

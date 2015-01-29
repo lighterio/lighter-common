@@ -8,6 +8,8 @@
  * - "oxford" case `Looks_Like_This`.
  * - "spinal" case `looks-like-this`.
  * - "train" case `LOOKS-LIKE-THIS`.
+ * - "private" case `_looksLikeThis`.
+ * - "shrinker" case `_LOOKS_LIKE_THIS`.
  *
  * @origin lighter-common/common/string/caser.js
  * @version 0.0.1
@@ -65,6 +67,14 @@ var caser = module.exports = {
 
   train: function (name) {
     return caser.split(name).join('-').toUpperCase();
+  },
+
+  private: function (name) {
+    return '_' + caser.camel(name);
+  },
+
+  shrinker: function (name) {
+    return '';
   }
 
 };

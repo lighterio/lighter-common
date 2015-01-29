@@ -1,14 +1,7 @@
-/**
- * Usage:
- *   lighter-common sync [options]
- *
- * Options:
- *   -d, --dry-run         Show what would be changed, but don't change anything.
- */
-
 var fs = require('fs');
 var dirname = require('path').dirname;
 var mkdirp = require('../common/fs/mkdirp-sync.js');
+var short = require('../common/fs/shorten-path');
 var pattern = /\/common\/(.*?\.js)$/;
 var map = {};
 var wait = 0;
@@ -16,12 +9,22 @@ var commonDir = __dirname.replace(/commands$/, 'common');
 var getDir = require('path').dirname;
 var options;
 
-module.exports = function (input) {
-  options = input;
-  wait++;
-  find(commonDir, 1);
-  find(process.cwd());
-  unwait();
+module.exports = {
+
+  description: 'Update lighter-common modules in the current directory',
+
+  options: [
+    '-d, --dry-run     Show what would be changed, but don\'t change anything'
+  ],
+
+  run: function (input) {
+    options = input;
+    wait++;
+    find(commonDir, 1);
+    find(process.cwd());
+    unwait();
+  }
+
 };
 
 function find(path, isMaster) {
@@ -40,7 +43,6 @@ function find(path, isMaster) {
           try {
             ignore = '' + fs.readFileSync(path + '/.gitignore');
             ignore = ignore.split('\n');
-            //console.log(ignore);
           }
           catch (e) {
             ignore = [];
@@ -85,6 +87,7 @@ function unwait() {
 
 function finish() {
   var key, item, path, master, minions, minion;
+  console.log('');
   for (key in map) {
     item = map[key];
     master = item.master || 0;
@@ -94,6 +97,7 @@ function finish() {
       item.master = copy('Merged'.yellow, minions[0].path, commonDir + '/' + key);
     }
   }
+  console.log('');
   for (key in map) {
     item = map[key];
     master = item.master;
@@ -106,11 +110,12 @@ function finish() {
       });
     }
   }
+  console.log('');
 }
 
 function copy(direction, source, dest) {
   function report() {
-    console.log(direction + ': '.gray + shorten(source).cyan + ' > '.gray + shorten(dest));
+    console.log(direction + ': '.gray + short(source).cyan + ' > '.gray + short(dest));
   }
   var content = '' + fs.readFileSync(source);
   var original = '';
@@ -140,14 +145,4 @@ function copy(direction, source, dest) {
     path: dest,
     time: new Date()
   };
-}
-
-function shorten(path) {
-  var dirs = [[process.cwd(), '.'], [process.env.HOME, '~']];
-  for (var i = 0; i < 2; i++) {
-    var dir = dirs[i];
-    if (dir[0] && (path.indexOf(dir[0]) === 0)) {
-      return dir[1] + path.substr(dir[0].length);
-    }
-  }
 }
