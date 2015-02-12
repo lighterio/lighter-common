@@ -1,7 +1,7 @@
 /**
  * Add to an exception's stack.
  *
- * @origin lighter-common/common/error/restack.js
+ * @origin https://github.com/lighterio/lighter-common/common/error/restack.js
  * @version 0.0.1
  */
 

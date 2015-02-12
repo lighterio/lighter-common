@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 if (process.mainModule == module) {
-  require(__dirname + '/common/process/cli')({
+  require('./common/process/cli')({
     aliases: {
       l: 'list',
       i: 'import',

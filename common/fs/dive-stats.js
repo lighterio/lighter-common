@@ -2,7 +2,7 @@
  * Dive into a directory, and call back with an array of fs.lstat results,
  * with a path property added to each.
  *
- * @origin lighter-common/common/fs/dive-stats.js
+ * @origin https://github.com/lighterio/lighter-common/common/fs/dive-stats.js
  * @version 0.0.1
  */
 

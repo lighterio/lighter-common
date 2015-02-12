@@ -3,7 +3,7 @@
  * that exist under it. Indicate directories with trailing slashes, and omit
  * symbolic links.
  *
- * @origin lighter-common/common/fs/dive-paths.js
+ * @origin https://github.com/lighterio/lighter-common/common/fs/dive-paths.js
  * @version 0.0.1
  */
 

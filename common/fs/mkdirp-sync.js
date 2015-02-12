@@ -1,7 +1,7 @@
 /**
  * Synchronous recursive mkdir, like `mkdir -p`.
  *
- * @origin lighter-common/common/fs/mkdirp-sync.js
+ * @origin https://github.com/lighterio/lighter-common/common/fs/mkdirp-sync.js
  * @version 0.0.2
  */
 

@@ -5,15 +5,15 @@
  * @version 0.0.1
  */
 
-JSON.evaluate = function (js, fallback) {
-  delete JSON.evaluate.error; // jshint ignore:line
+var evaluate = module.exports = JSON.evaluate = function (js, fallback) {
+  delete evaluate.error;
   try {
     eval('JSON.evaluate.value=' + js); // jshint ignore:line
-    return JSON.evaluate.value;
+    return evaluate.value;
   }
   catch (error) {
     error.message += '\nJS: ' + js;
-    JSON.evaluate.error = error;
+    evaluate.error = error;
     return fallback;
   }
 };

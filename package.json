@@ -4,7 +4,8 @@
   "description": "A set of tools and libraries for Lighter.io modules",
   "dependencies": {},
   "devDependencies": {
-    "exam": "^0.2.2"
+    "exam": "^0.2.2",
+    "xxhash-nan": "^0.9.0"
   },
   "keywords": [
     "lighter-common"

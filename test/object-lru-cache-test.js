@@ -1,6 +1,6 @@
 var LruCache = require('../common/object/lru-cache');
 
-ddescribe('LruCache', function () {
+describe('LruCache', function () {
 
   describe('.init', function () {
 
