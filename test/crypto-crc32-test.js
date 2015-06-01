@@ -1,7 +1,7 @@
 var crc32 = require('../common/crypto/crc32');
 var crc32b = require('../common/crypto/crc32b');
 
-ddescribe('CRC32', function () {
+describe('CRC32', function () {
 
   var i = 0;
   this.passCount = 1e6;

@@ -33,7 +33,7 @@ We would like to thank all of the amazing people who use, support,
 promote, enhance, document, patch, and submit comments & issues.
 Lighter Common couldn't exist without you.
 
-Additionally, huge thanks go to [TUNE](http://www.tune.com) for employing
+Additionally, huge thanks go to [Goin’](https://goin.io) for employing
 and supporting [Lighter Common](http://lighter.io/lighter-common) project maintainers,
 and for being an epically awesome place to work (and play).
 
